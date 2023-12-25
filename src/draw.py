@@ -10,6 +10,9 @@ from config import TENCENT_SECRET_ID, TENCENT_SECRET_KEY
 
 
 def generate_image(prompt_dict, style, size, temp_dir):
+    # 限制图片数量
+    if len(prompt_dict) > 15:
+        prompt_dict = {k: prompt_dict[k] for k in list(prompt_dict)[:15]}
     os.makedirs(f"{temp_dir}/image")
     img_id = 1
     lrc_img_dict = {}
