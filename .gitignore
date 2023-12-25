@@ -1,0 +1,5 @@
+venv/
+resource/temp/**/
+resource/video/**
+.idea/
+__pycache__/
