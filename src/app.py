@@ -9,11 +9,14 @@ from email_notice import send_email
 from prompt import generate_prompt
 from song import getSongId, getLyrics, getSong, parseLyrics
 from video import addLyrics, compositeVideo
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/generate', methods=['POST'])
+@cross_origin()
 def draw():
     data = request.get_json()
     song = data['song']
