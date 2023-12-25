@@ -53,9 +53,9 @@ def service(song, style, size, email):
     lrc_img_dict = generate_image(prompt_dict, style, size, temp_dir)
     # 合成视频
     addLyrics(lyrics_list, lrc_img_dict, temp_dir)
-    compositeVideo(song_name, durations_list, temp_dir)
+    video_id = compositeVideo(song_name, durations_list, temp_dir)
     # 邮件通知
-    send_email(f"http://localhost:5000/static/video/{song_name}.mp4", email)
+    send_email(f"http://localhost:5000/static/video/{video_id}.mp4", email)
 
     # shutil.rmtree(temp_dir)
     # print(f'随机目录已删除：{temp_dir}')

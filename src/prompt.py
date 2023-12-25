@@ -2,13 +2,9 @@ import json
 import re
 import sys
 
-import openai
 import requests
 
-from config import CHATGPT_API_KEY, CHATGPT_PROXY
-
-# 国内代理不用翻墙
-openai.api_base = CHATGPT_PROXY
+from config import CHATGPT_API_KEY
 
 
 def generate_prompt(lyrics_list):

@@ -1,5 +1,4 @@
 # ChatGPT
-CHATGPT_PROXY = "https://api.chatanywhere.tech"
 CHATGPT_API_KEY = "sk-TPv6zDBKBC9L0YgLE4NtYKXpPcR8rDjLL7Ex68JWoLMZz6tj"
 # 腾讯AI绘图
 TENCENT_SECRET_ID = "AKIDQgy4va0INEsIWWKuGNFxRhiVDhvvhEXd"

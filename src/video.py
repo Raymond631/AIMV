@@ -1,4 +1,5 @@
 import random
+import uuid
 
 from PIL import Image, ImageDraw, ImageFont
 from moviepy.editor import *
@@ -94,6 +95,8 @@ def compositeVideo(song_name, durations, temp_dir):
     # 输出视频文件
     video_dir_path = os.path.abspath('../resource/video')
     os.makedirs(video_dir_path, exist_ok=True)
-    output_path = f'{video_dir_path}/{song_name}.mp4'
+    video_id = uuid.uuid4()
+    output_path = f'{video_dir_path}/{video_id}.mp4'
     video_clip.write_videofile(output_path, codec='libx264', audio_codec='aac', fps=24)
     print("MV合成成功")
+    return video_id
