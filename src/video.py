@@ -25,7 +25,7 @@ def find_optimal_font_size(draw, text, font_path, target_width, max_height, init
     return lower_size if text_height < max_height else int(lower_size * (max_height / text_height))
 
 
-def add_lyrics_to_image(image_path, output_path, lyrics, font_path=os.path.abspath("../resource/font/STKAITI.TTF")):
+def add_lyrics_to_image(image_path, output_path, lyrics, font_path=os.path.abspath("../resource/font/msyh.ttc")):
     # 打开图片
     img = Image.open(image_path)
 
@@ -47,11 +47,12 @@ def add_lyrics_to_image(image_path, output_path, lyrics, font_path=os.path.abspa
     text_x = (img.width - text_width) / 2
     text_y = img.height - text_height - 30  # 调整底部边距
 
-    # TODO 添加背景色（半透明无效）
-    background_rect = Image.new('RGBA', (text_width, text_height), color=(148, 151, 152, 128))
-    img.paste(background_rect, (int(text_x), int(text_y)))
-
-    # 将歌词添加到图片
+    # 绘制黑色边缘文字
+    draw.text((text_x - 2, text_y - 2), lyrics, font=font, fill="black")
+    draw.text((text_x + 2, text_y - 2), lyrics, font=font, fill="black")
+    draw.text((text_x - 2, text_y + 2), lyrics, font=font, fill="black")
+    draw.text((text_x + 2, text_y + 2), lyrics, font=font, fill="black")
+    # 绘制白色文字
     draw.text((text_x, text_y), lyrics, font=font, fill="white")
 
     # 保存输出图片
@@ -84,7 +85,6 @@ def compositeVideo(song_name, durations, temp_dir):
         img_clip = ImageClip(img_path).set_duration(durations[i] / 1000)
         image_clips.append(img_clip)
     video_clip = concatenate_videoclips(image_clips, method="compose")
-    video_clip = video_clip.resize(width=320, height=240)
 
     # 添加背景音乐
     audio_path = f'{temp_dir}/song/{song_name}.mp3'
