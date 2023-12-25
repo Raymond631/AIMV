@@ -25,7 +25,7 @@ def find_optimal_font_size(draw, text, font_path, target_width, max_height, init
     return lower_size if text_height < max_height else int(lower_size * (max_height / text_height))
 
 
-def add_lyrics_to_image(image_path, output_path, lyrics, font_path=os.path.abspath("resource/font/STKAITI.TTF")):
+def add_lyrics_to_image(image_path, output_path, lyrics, font_path=os.path.abspath("../resource/font/STKAITI.TTF")):
     # 打开图片
     img = Image.open(image_path)
 
@@ -92,7 +92,7 @@ def compositeVideo(song_name, durations, temp_dir):
     video_clip = video_clip.set_audio(audio_clip)
 
     # 输出视频文件
-    video_dir_path = os.path.abspath('resource/video')
+    video_dir_path = os.path.abspath('../resource/video')
     os.makedirs(video_dir_path, exist_ok=True)
     output_path = f'{video_dir_path}/{song_name}.mp4'
     video_clip.write_videofile(output_path, codec='libx264', audio_codec='aac', fps=24)

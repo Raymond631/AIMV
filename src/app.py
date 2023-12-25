@@ -32,12 +32,12 @@ def draw():
 
 @app.route('/static/video/<path:filename>')
 def serve_video(filename):
-    video_dir = os.path.abspath('resource/video/')
+    video_dir = os.path.abspath('../resource/video/')
     return send_from_directory(video_dir, filename)
 
 
 def service(song, style, size, email):
-    temp_dir_path = os.path.abspath('resource/temp')
+    temp_dir_path = os.path.abspath('../resource/temp')
     os.makedirs(temp_dir_path, exist_ok=True)
     temp_dir = tempfile.mkdtemp(prefix='temp_', dir=temp_dir_path)
     print(f'随机目录已创建：{temp_dir}')
